@@ -3,20 +3,37 @@ import { vozidla } from '../data/content';
 ---
 
 <section class="bg-[#f5f5f5]">
-  <div class="mx-auto max-w-6xl px-4 py-16">
+  <div class="mx-auto max-w-7xl px-4 py-16">
     <h2 class="text-center font-heading text-[32px] font-bold md:text-left">{vozidla.nadpis}</h2>
     <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {
         vozidla.karty.map((karta) => (
-          <a href={karta.url} target="_blank" rel="noopener noreferrer" class="block transition hover:opacity-90">
+          <a
+            href={karta.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-sm transition hover:shadow-md"
+          >
             <img
-              src={karta.src}
-              alt={karta.alt}
+              src={karta.foto}
+              alt={karta.nazov}
               width="600"
-              height="833"
-              class="w-full rounded-lg shadow-sm"
+              height="400"
+              class="aspect-[3/2] w-full object-cover"
               loading="lazy"
             />
+            <div class="flex flex-1 flex-col p-5">
+              <span class="self-start rounded-full bg-neutral-100 px-4 py-1.5 text-[12px] font-semibold text-brand">
+                {vozidla.stitok}
+              </span>
+              <p class="mt-4 font-heading text-[16px] font-bold leading-snug">{karta.nazov}</p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                {karta.parametre.map((parameter) => (
+                  <span class="rounded bg-neutral-100 px-2.5 py-1 text-[13px] text-neutral-700">{parameter}</span>
+                ))}
+              </div>
+              <p class="mt-auto pt-6 text-[18px] font-bold text-brand">{karta.cena}</p>
+            </div>
           </a>
         ))
       }
