@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+:root {
+  interpolate-size: allow-keywords;
+}
+
+@theme {
+  --font-heading: "Roboto", sans-serif;
+  --font-body: "Open Sans", sans-serif;
+  --color-brand: #003eb3;
+  --color-brand-dark: #001f5a;
+  --color-pill: #d9e2f4;
+}

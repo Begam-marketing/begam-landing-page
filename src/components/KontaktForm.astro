@@ -1,0 +1,91 @@
+---
+import { formular } from '../data/content';
+import { site } from '../data/site';
+
+const inputClass =
+  'w-full rounded-md border border-neutral-200 bg-white px-4 py-3 text-sm shadow-sm placeholder:text-neutral-400 focus:border-brand focus:outline-none';
+const selectClass = `${inputClass} cursor-pointer appearance-none pr-10`;
+---
+
+<section id="nezavazna-ponuka" class="scroll-mt-8 bg-brand">
+  <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 md:grid-cols-[1fr_1.3fr] md:py-24">
+    <h2 class="text-center font-heading text-[40px] font-bold leading-tight text-white md:text-[48px]">
+      {formular.nadpis}
+    </h2>
+
+    <div class="rounded-3xl bg-white p-6 shadow-lg md:p-10">
+      <form
+        name="kontakt-dopyt"
+        method="POST"
+        action="/dakujeme"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        data-netlify-recaptcha="true"
+        class="grid gap-4"
+      >
+        <input type="hidden" name="form-name" value="kontakt-dopyt" />
+        <p class="hidden">
+          <label>Nevypĺňajte: <input name="bot-field" /></label>
+        </p>
+
+        <div>
+          <label for="meno" class="sr-only">{formular.polia.meno}</label>
+          <input id="meno" name="meno" type="text" required placeholder={formular.polia.meno} class={inputClass} />
+        </div>
+
+        <div>
+          <label for="email" class="sr-only">{formular.polia.email}</label>
+          <input id="email" name="email" type="email" required placeholder={formular.polia.email} class={inputClass} />
+        </div>
+
+        <div>
+          <label for="telefon" class="sr-only">{formular.polia.telefon}</label>
+          <input id="telefon" name="telefon" type="tel" required placeholder={formular.polia.telefon} class={inputClass} />
+        </div>
+
+        <div>
+          <label for="cas-kontaktu" class="sr-only">{formular.polia.casKontaktu}</label>
+          <select id="cas-kontaktu" name="cas-kontaktu" class={selectClass}>
+            {formular.casKontaktuMoznosti.map((moznost) => <option value={moznost}>{moznost}</option>)}
+          </select>
+        </div>
+
+        <div>
+          <label for="sprava" class="sr-only">{formular.polia.sprava}</label>
+          <textarea id="sprava" name="sprava" rows="4" placeholder={formular.polia.sprava} class={inputClass}
+          ></textarea>
+        </div>
+
+        <label class="flex items-start gap-3 text-sm text-neutral-700">
+          <input type="checkbox" name="gdpr-suhlas" value="áno" required class="mt-0.5 h-4 w-4 accent-brand" />
+          <span>
+            <a href={site.gdprUrl} target="_blank" rel="noopener" class="underline hover:text-brand">
+              {formular.gdprText}
+            </a>
+            <span class="text-red-500">*</span>
+          </span>
+        </label>
+
+        <div data-netlify-recaptcha="true"></div>
+
+        <button
+          type="submit"
+          class="w-full rounded-md bg-brand py-4 font-heading text-[18px] font-bold text-white transition hover:bg-brand-dark disabled:opacity-50"
+        >
+          {formular.odoslat}
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Vlastná šípka pre selecty — natívny vzhľad je vypnutý (appearance-none),
+     aby Safari rešpektovalo padding a zaoblenie ako pri ostatných poliach. */
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23525252' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m19.5 8.25-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.875rem center;
+    background-size: 1rem;
+  }
+</style>

@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Benefity from '../components/Benefity.astro';
+import KontaktForm from '../components/KontaktForm.astro';
+import Realizacie from '../components/Realizacie.astro';
+import Footer from '../components/Footer.astro';
+import { seo } from '../data/content';
+import { site } from '../data/site';
+
+const firmaLd = {
+  '@context': 'https://schema.org',
+  '@type': site.jsonLd.typFirmy,
+  name: site.nazovFirmy,
+  description: seo.popis,
+  url: Astro.site?.href,
+  image: new URL(site.ogImage.src, Astro.site).href,
+  logo: new URL(site.logo.src, Astro.site).href,
+  email: site.kontakt.email,
+  telephone: site.kontakt.telefonJsonLd,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.jsonLd.adresa.ulica,
+    addressLocality: site.jsonLd.adresa.mesto,
+    postalCode: site.jsonLd.adresa.psc,
+    addressCountry: site.jsonLd.adresa.krajina,
+  },
+  areaServed: site.jsonLd.oblastPosobenia,
+};
+---
+
+<Layout title={seo.titulok} description={seo.popis}>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(firmaLd)} />
+  <Header />
+  <Hero />
+  <Benefity />
+  <Realizacie />
+  <KontaktForm />
+  <Footer />
+</Layout>

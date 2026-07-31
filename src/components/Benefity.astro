@@ -1,0 +1,20 @@
+---
+import { benefity } from '../data/content';
+---
+
+<section class="bg-white">
+  <div class="mx-auto max-w-6xl px-4 py-16">
+    <h2 class="text-center font-heading text-[32px] font-bold md:text-left">{benefity.nadpis}</h2>
+    <div class="mt-10 flex flex-wrap justify-center gap-4 md:justify-between">
+      {
+        benefity.polozky.map((riadky) => (
+          <div class="rounded-xl border-2 border-brand bg-white px-8 py-4 text-center font-heading font-bold leading-snug text-neutral-900">
+            {riadky[0]}
+            <br />
+            {riadky[1]}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
