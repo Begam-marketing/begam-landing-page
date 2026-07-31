@@ -32,7 +32,9 @@ import { site } from '../data/site';
           {cislo}
         </a>
       ))}
-      <p class="text-center text-neutral-300 md:text-right">{site.kontakt.sidlo}</p>
+      <p class="text-center text-neutral-300 md:text-right">
+        {site.kontakt.sidloRiadky.map((riadok) => <span class="block">{riadok}</span>)}
+      </p>
     </div>
   </div>
 </footer>

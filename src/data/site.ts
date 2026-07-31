@@ -48,7 +48,8 @@ export const site = {
     telefony: ['+421 905 812 168'],
     /** Telefón v medzinárodnom formáte pre JSON-LD */
     telefonJsonLd: '+421905812168',
-    sidlo: 'Bratislavská 7487/78, 917 02 Trnava',
+    /** Adresa v pätičke — každá položka je samostatný riadok */
+    sidloRiadky: ['Bratislavská', '7487/78,', '917 02 Trnava'],
   },
 
   /** Vedúci predaja jazdených vozidiel — zobrazuje sa v hero sekcii */

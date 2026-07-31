@@ -9,7 +9,8 @@ export const seo = {
 };
 
 export const hero = {
-  nadpis: 'Ponuka jazdených vozidiel v BEGAM Trnava',
+  //   = nezalomiteľná medzera — drží predložku „v" spolu s BEGAM
+  nadpis: 'Ponuka jazdených vozidiel v BEGAM Trnava',
   podnadpisTucne: 'Hľadáte jazdené vozidlo',
   podnadpis:
     ' bez zbytočných starostí? BEGAM Trnava vám ponúka širokú ponuku vozidiel, profesionálne poradenstvo a férový prístup pri výbere auta pre každodenné jazdy aj dlhé cesty.',
