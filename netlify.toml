@@ -1,3 +1,14 @@
 [build]
   command = "npm run build"
   publish = "dist"
+
+# Pôvodné adresy presmerované na novú cestu /jazdene-vozidla
+[[redirects]]
+  from = "/"
+  to = "/jazdene-vozidla/"
+  status = 301
+
+[[redirects]]
+  from = "/dakujeme"
+  to = "/jazdene-vozidla/dakujeme"
+  status = 301
