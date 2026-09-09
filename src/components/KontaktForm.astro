@@ -24,6 +24,7 @@ const selectClass = `${inputClass} cursor-pointer appearance-none pr-10`;
         class="grid gap-4"
       >
         <input type="hidden" name="form-name" value="kontakt-dopyt" />
+        <input type="hidden" name="utm" value="" />
         <p class="hidden">
           <label>Nevypĺňajte: <input name="bot-field" /></label>
         </p>
@@ -89,3 +90,11 @@ const selectClass = `${inputClass} cursor-pointer appearance-none pr-10`;
     background-size: 1rem;
   }
 </style>
+
+<script>
+  // Skryté pole "utm" — celý query string z URL za "?" (napr. utm_source=facebook&utm_medium=cpc).
+  const utmPole = document.querySelector<HTMLInputElement>('form[name="kontakt-dopyt"] input[name="utm"]');
+  if (utmPole && location.search.length > 1) {
+    utmPole.value = location.search.slice(1);
+  }
+</script>
