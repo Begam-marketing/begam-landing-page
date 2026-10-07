@@ -97,4 +97,12 @@ const selectClass = `${inputClass} cursor-pointer appearance-none pr-10`;
   if (utmPole && location.search.length > 1) {
     utmPole.value = location.search.slice(1);
   }
+
+  // Event pre GTM pri odoslaní formulára.
+  const formular = document.querySelector<HTMLFormElement>('form[name="kontakt-dopyt"]');
+  formular?.addEventListener('submit', () => {
+    const w = window as typeof window & { dataLayer?: Record<string, unknown>[] };
+    w.dataLayer = w.dataLayer || [];
+    w.dataLayer.push({ event: 'generate_lead' });
+  });
 </script>
